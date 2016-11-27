@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'cgroups/index'
+
+  get 'contents/get'
+
+  get 'content/show'
+
+  get 'test/index'
+
   devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: 'home#index'

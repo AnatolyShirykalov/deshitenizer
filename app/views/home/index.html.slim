@@ -1,4 +1,293 @@
-h1
-  | Home#index
-p
-  | Find me in app/views/home/index.html.slim
+.home-index-wpar ng-app='home'
+  .home-index-subwpar ng-controller="Text"
+    table style="width:100%;border:0;" 
+      tr
+        td style="width:35%;" 
+        td style="font-size:9pt;text-align:center;" 
+          img alt="«Ширыкалов и Костырка»" src=image_path("chic.png") width="150" /
+          br/     
+          | для облагораживания текстов
+        td style="width:35%;text-align:right;" 
+          img alt="Я на могучем и великом Пишу с изяществом и шиком!" height="70" src=image_path("logo-chic.png") /
+    form name="papupa" 
+      table.outertable
+        tr
+          th.halfwide Исходный текст
+          th.halfwide Результат обработки
+        tr
+          td.halfwide
+            textarea#gavgav ng-model="input_text" ng-init="initInputTextarea()" autofocus="" cols="70" rows="20" style="width:98%" 
+                
+          td.halfwide
+            textarea#meow ng-model="output_text" cols="70" rows="20" style="width:98%" 
+
+
+
+
+
+
+
+      .typograph-options ng-init="initOptions()"
+        .cgroup ng-repeat="cgroup in cgroups"
+          input.cgroup-checkbox type="checkbox" name="cgroup_{{cgroup.id}}" ng-model="cgroup.checked"
+          label.cgroup-label for="cgroup_{{cgroup.id}}"
+            | {{cgroup.name}} ({{cgroup.cregexes.length}})
+          .cregex-list ng-show="cgroup.checked"
+            .cregex-item ng-repeat="cregex in cgroup.cregexes"
+              input.cregex-checkbox type="checkbox" ng-model="cregex.checked" name="cregex_{{cregex.id}}" ng-click="desh()"
+              label.cregex-label for="cregex_{{cregex.id}}"
+                | {{cregex.shortname}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*      - @cgroups.each do |cg|*/
+        /*legend*/
+          /*= cg.name*/
+        /*- cg.cregexes.each do |re|*/
+          /*input.regex-checkbox type="checkbox" ng-model="regex_#{re.id}" name="regex_#{re.id}"*/
+          /*label.regex-label for="regex_#{re.id}"*/
+          /*= re.shortname*/
+          /*br/*/
+
+      table.centah.old-kostyrka
+        tr
+          td.midcell
+            fieldset
+              legend Исходный формат:
+              table.outertable
+                tr
+                  td
+                    input#iUTF checked="checked" name="inputformat" type="radio" value="1" /
+                  td.outertable
+                    span title="Простой текстовый формат (plain text)"
+                      label for="iUTF"  обычный текст
+                tr
+                  td
+                    input#iHTML name="inputformat" type="radio" value="0" /
+                  td.outertable
+                    span title="Текст содержит тэги" 
+                      label for="iHTML"  HTML-текст с кодами
+                tr
+                  td
+                    input#iTeX name="inputformat" type="radio" value="2" /
+                  td.outertable
+                    span title="Текст содержит TeX-команды" 
+                      label for="iTeX" 
+                        span.texht
+                          | T
+                          sub> e
+                          | X
+                        |  или 
+                        span.latexht
+                          | L
+                          sup> a
+                          | T
+                          sub> e
+                          | X
+          td.midcell
+            fieldset
+              legend Конечный формат:
+              table.outertable
+                tr
+                  td
+                    input#oUTF checked="checked" name="outputformat" onchange="activateCheckboxes()" type="radio" value="3" /
+                  td.outertable
+                    span title="Расширенные типографические символы через готовые символы Юникода (иногда нужные символы могут отсутствовать в некоторых шрифтах)"
+                      label for="oUTF"  обычный текст (UTF-8)
+                tr
+                  td
+                    input#oHTML name="outputformat" onchange="activateCheckboxes()" type="radio" value="1" /
+                  td.outertable
+                    span title="Расширенные типографические символы через HTML-мнемоники" 
+                      label for="oHTML"  HTML-текст с кодами
+                tr
+                  td
+                    input#oTeX name="outputformat" onchange="activateCheckboxes()" type="radio" value="4" /
+                  td.outertable
+                    span title="Контрольные последовательности, определённые в LaTeX’е и в babel-russian" 
+                      label for="oTeX" 
+                        span.latexht
+                          | L
+                          sup> a
+                          | T
+                          sub> e
+                          | X
+          td.midcell
+            fieldset
+              legend Корректура:
+              table.outertable
+                tr
+                  td
+                    input#AV1 name="proofing" type="radio" value="не требуется" /
+                  td.outertable
+                    span title="Текст набран профессионалом или уже прошёл корректуру." 
+                      label for="AV1"  не требуется
+                tr
+                  td
+                    input#AV3 checked="" name="proofing" type="radio" value="оформление пунктуации" /
+                  td.outertable
+                    span title="Текст набран с &quot;плохими&quot; кавычками, тире - дефис, сокращения некорректны и т.п." 
+                      label for="AV3"  оформление пунктуации
+                tr
+                  td
+                    input#AV4 name="proofing" type="radio" value="орфография и пунктуация" /
+                  td.outertable
+                    span title="Текст набран кое-как с ошибками в словах. Экспериментальная опция"
+                      label for="AV4"  орфография и пунктуация
+      table.centah.old-kostyrka
+        tr
+          td rowspan="2" width="211" 
+          td.buttonholder rowspan="2" 
+            input#blagorod onclick="deshitenize( );" style="width: 15em; height: 7.5ex; font-weight: bold; font-size:11pt;" title="Сверстать всех наверх!" type="button" value="Облагородить текст!" /
+          td.buttonholder rowspan="2" 
+            input#plus.show_hide onclick="changelabel();" style="width: 15em; height: 7.5ex; font-size:11pt;" title="Точная настройка" type="button" value="Показать опции" /
+          td style="text-align:right;font-size:9pt;vertical-align:top;" width="211" 
+            input#sample onclick="sample_text();" style="width: 12em; height: 4ex; font-size: 9pt;" title="Вставить текст-рыбу, демонстрирующий все возможности типографа" type="button" value="Пробный текст" /
+        tr style="text-align:right;font-size:9pt;vertical-align:bottom;" 
+          td
+            input#sample onclick="clean_text();" style="width: 12em; height: 4ex; font-size: 9pt;" title="Очистить поля ввода текста и результата обработки") type="button" value="Очистить" /
+      .slidingDiv style="display: block; font-size:10pt" 
+        table
+          tr
+            td style="vertical-align:top;" 
+              fieldset
+                legend Расширенные настройки
+                br/
+                span title="Объединить множественные пробелы и/или табуляцию, идущую подряд, в один обычный пробел. Не рекомендуется для текстов с исходными кодами, отформатированными пробелами." 
+                  input#squeezespaces checked="" name="customcheckboxes" type="checkbox" /
+                  label for="squeezespaces"  объединение пробельных символов
+                br/
+                span title=" +([),!;:.?])" 
+                  input#punctum_space checked="" name="customcheckboxes" type="checkbox" /
+                  label for="punctum_space"  исправление пробелов при пунктуации
+                br/
+                span title="н. э.|т. [педнкч].|с. г." 
+                  input#sokr checked="" name="customcheckboxes" type="checkbox" /
+                  label for="sokr"  пробел в неразрывных сокращениях
+                br/
+                span title="н. э.|т. [педнкч].|с. г." 
+                  input#fio checked="" name="customcheckboxes" type="checkbox" /
+                  label for="fio"  пробел в инициалах и фамилиях
+                br/
+                span title="[авикосуя]|[вск]о|об" 
+                  input#fdbrjcez checked="" name="customcheckboxes" type="checkbox" /
+                  label for="fdbrjcez"  однобуквенные слова
+                br/
+                span title="н[еи]" 
+                  input#neg checked="" name="customcheckboxes" type="checkbox" /
+                  label for="neg" 
+                    | частицы
+                    i не
+                    i ни
+                br/
+                span title="же|бы|л[иь]" 
+                  input#parts checked="" name="customcheckboxes" type="checkbox" /
+                  label for="parts" 
+                    | частицы
+                    i бы
+                    i ли
+                    i же
+                br/
+                span title="[нз]а|[птнд]о|о[бт]|[и]з" 
+                  input#pretwo name="customcheckboxes" type="checkbox" /
+                  label for="pretwo"  двухбуквенные предлоги
+                br/
+                span title="(ул|д|корп?|стр|кв|оф)." 
+                  input#adres checked="" name="customcheckboxes" type="checkbox" /
+                  label for="adres"  привязка сокращений в адресах
+                br/
+                span title="(п|табл|(?:ри)?с|илл|см)." 
+                  input#ref checked="" name="customcheckboxes" type="checkbox" /
+                  label for="ref"  ссылки-указатели на объекты
+                br/
+                span title="(мл(?:н|рд)|тыс|коп|руб|раз|шт|года?|гг|вв)" 
+                  input#comEI checked="" name="customcheckboxes" type="checkbox" /
+                  label for="comEI"  бытовые ед. изм.
+                br/
+                span title="t" 
+                  input#trEI checked="" name="customcheckboxes" type="checkbox" /
+                  label for="trEI"  технические ед. изм.
+                br/
+                span title="t" 
+                  input#dash checked="" name="customcheckboxes" type="checkbox" /
+                  label for="dash"  тире
+                br/
+                span title=(" +%|([0-9])%") 
+                  input#percent checked="" name="customcheckboxes" type="checkbox" /
+                  label for="percent"  знаки процента, умножения, номера...
+                br/
+                span title=(" *… *") 
+                  input#dots checked="" name="customcheckboxes" type="checkbox" /
+                  label for="dots"  многоточия
+                br/
+                span title="Кое-как, кое-какому..." 
+                  input#koe name="customcheckboxes" type="checkbox" /
+                  label for="koe" 
+                    | частица
+                    i кое (кой)
+                br/
+                span title="Самые популярные речевые и орфографические ошибки, которые можно однозначно исправить" 
+                  input#blunder name="customcheckboxes" type="checkbox" /
+                  label for="blunder"  орфографические ошибки
+            td style="vertical-align:top;" 
+              fieldset
+                legend Параметры совместимости
+                br/
+                span title="Некоторые шрифты не поддерживают символов U+202F и U+2009 (неразрывный тонкий пробел), тонкий пробел. На некоторых устройствах вместо тонких пробелов возникают непонятные значки. В подобных случаях можно пожертвовать красотой и использовать обычный неразрывный пробел." 
+                  input#thspCompat name="customcheckboxes" type="checkbox" /
+                  label for="thspCompat"  не использовать тонких пробелов
+                  br/
+                  | пока что этот флажок не работает
+                br/
+                br/
+                span title="Анатолий, ты запилил — ты и дебажь." 
+                  input#hrefs name="customcheckboxes" type="checkbox" /
+                  label for="hrefs"  выделение гиперссылок типа href
+                br/
+                br/
+                span title="Добавить шапку и окружение документа, чтобы pdfLaTeX смог скомпилировать текст." 
+                  input#addPreamble disabled="" name="customcheckboxes" type="checkbox" /
+                  label for="addPreamble" 
+                    | добавить
+                    span.latexht
+                      | L
+                      sup> a
+                      | T
+                      sub> e
+                      | X
+                br/
+                br/
+                span title="Символы, которые должны эскейпиться бэкслэшем" 
+                  label for="bad" 
+                    | Плохие символы для
+                    span.texht
+                      | T
+                      sub> e
+                      | X
+                  br/
+                  input#bad placeholder="Введите без пробелов" type="text" /
+            td.columnsep
+              | \&nbsp;
+            td
+              table
+                tr
+                  td
+                  td

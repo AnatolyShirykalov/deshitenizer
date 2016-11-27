@@ -1,0 +1,87 @@
+  .outertable {
+  width:100%;
+  border:0;
+  }
+  
+  tr.outertable{
+  vertical-align:middle;
+  }
+
+  .halfwide {
+  width:50%;  
+  }
+
+  p.copyright {
+  font-size:8pt;
+  text-align:center;
+  }
+  
+  table.centah {
+  margin-left:auto; 
+  margin-right:auto;
+  border:0;
+  }
+  
+  .midcell {
+  width:290px;
+  }
+  
+  .buttonholder {
+  text-align:center;
+  width:200px;
+  }
+  
+  .columnsep {
+  width:20px;
+  }
+
+  .kod {
+  color:#005500;
+  background-color:#D0D0D0;
+  font-weight:bold;
+  font-family:"Lucida Console", Monaco, monospace;
+  }
+  
+  .granditem {
+  letter-spacing:1px;
+  font-variant:small-caps;
+  }
+  
+  .texht sub, .latexht sub, .latexht sup {
+  text-transform: uppercase;
+  }
+  
+  .texht sub, .latexht sub {
+  vertical-align: -0.5ex;
+  margin-left: -0.1667em;
+  margin-right: -0.125em;
+  }
+  
+  .texht, .latexht, .texht sub, .latexht sub {
+  font-size: 1em;
+  }
+  
+  .latexht sup {
+  font-size: 0.85em;
+  vertical-align: 0.15em;
+  margin-left: -0.36em;
+  margin-right: -0.15em;
+  }
+  
+  .show_hide {
+    display:none;
+  }
+  
+  body {
+  background-color:#F5F5F5;
+  }
+  
+  dt {
+  font-weight:bold;
+  }
+  
+  a.run {
+  text-decoration:none;
+  border-bottom: 1px dashed;
+  }
+
