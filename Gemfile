@@ -16,6 +16,9 @@ gem 'rails_admin'
 gem 'slim-rails'
 gem 'html2slim'
 
+# 
+gem 'ngannotate-rails'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
