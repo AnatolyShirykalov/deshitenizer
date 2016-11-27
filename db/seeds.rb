@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+admin_pw = Rails.env.production? ? ENV["ADMIN_PASSWORD"] : "admin11"
+User.create!(email: 'admin@deshitenizer.ru', password: admin_pw, password_confirmation: admin_pw)
