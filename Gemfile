@@ -8,9 +8,9 @@ gem 'pg', '~> 0.18'
 
 # User authentification
 gem 'devise'
-
 # Administration panel
 gem 'rails_admin'
+gem 'enumerize'
 
 # HTML templates
 gem 'slim-rails'

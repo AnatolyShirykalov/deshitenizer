@@ -1,0 +1,18 @@
+ru:
+  enumerize:
+    defaults:
+      type:
+        input: входной
+        output: выходной
+  activerecord:
+    models:
+      cregex: Регулярные выражения
+      cgroup: Группа выражений
+      content: Тексты
+      fixed_regex: Обязательные регулярные выражения
+      user: Пользователи
+    attributes:
+      user:
+        password: Пароль
+      fixed_regex:
+        type: Тип
