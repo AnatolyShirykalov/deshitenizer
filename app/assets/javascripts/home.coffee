@@ -25,7 +25,7 @@ angular.module('home').controller 'Text', ($scope)->
     $scope.output_text = state
 
   $scope.$watch 'input_text', (a, b) ->
-    if a and b and (a.length - b.length > 100)
+    if ((if a then a.length else 0) - (if b then b.length else 0)) > 100
       $.ajax {
         url: '/contents/create.json'
         type: 'post'
