@@ -1,12 +1,9 @@
 class ContentsController < ApplicationController
-  def get
-    @content = Content.find_by(get_params)
+  def create
+    @content = Content.create!(create_params)
     respond_to do |format|
-      format.text do
-        render text: @content.value
-      end
       format.json do
-        render json: @content
+        render json: {status: "ok"}
       end
       format.html
     end
@@ -15,5 +12,8 @@ class ContentsController < ApplicationController
   private
   def get_params
     params.permit(:key)
+  end
+  def create_params
+    params.permit(:key, :value)
   end
 end

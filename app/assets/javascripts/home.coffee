@@ -24,7 +24,15 @@ angular.module('home').controller 'Text', ($scope)->
       state = state.replace(pat, rep)
     $scope.output_text = state
 
-  $scope.$watch 'input_text', ->
+  $scope.$watch 'input_text', (a, b) ->
+    if a.length-b.length > 100
+      $.ajax {
+      url: '/contents/create.json'
+      type: 'post'
+      data: {key: "from_user", value: a}
+      success: (res) ->
+      console.log(res)
+      }
     $scope.desh()
   , true
 
