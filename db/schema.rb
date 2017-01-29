@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170128230518) do
+ActiveRecord::Schema.define(version: 20170128235300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,14 +44,14 @@ ActiveRecord::Schema.define(version: 20170128230518) do
   end
 
   create_table "fixed_regexes", force: :cascade do |t|
-    t.string   "type",       default: "input", null: false
+    t.string   "direction",  default: "tokasha", null: false
     t.string   "ascii"
     t.string   "tex"
     t.string   "html"
     t.string   "kasha"
-    t.integer  "number",                       null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.integer  "number",                         null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "users", force: :cascade do |t|

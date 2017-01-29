@@ -1,6 +1,6 @@
 class FixedRegex < ApplicationRecord
   extend Enumerize
-  enumerize :type, in: %w(input output)
+  enumerize :direction, in: %w(tokasha fromkasha)
 
 
 end

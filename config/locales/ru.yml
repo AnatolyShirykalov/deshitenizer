@@ -1,9 +1,9 @@
 ru:
   enumerize:
     defaults:
-      type:
-        input: входной
-        output: выходной
+      direction:
+        tokasha: входной
+        fromkasha: выходной
   activerecord:
     models:
       cregex: Регулярные выражения
@@ -15,4 +15,5 @@ ru:
       user:
         password: Пароль
       fixed_regex:
-        type: Тип
+        direction: направление
+
