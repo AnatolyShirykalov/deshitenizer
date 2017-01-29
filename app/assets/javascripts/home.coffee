@@ -27,11 +27,11 @@ angular.module('home').controller 'Text', ($scope)->
   $scope.$watch 'input_text', (a, b) ->
     if a.length-b.length > 100
       $.ajax {
-      url: '/contents/create.json'
-      type: 'post'
-      data: {key: "from_user", value: a}
-      success: (res) ->
-      console.log(res)
+        url: '/contents/create.json'
+        type: 'post'
+        data: {key: "from_user", value: a}
+        success: (res) ->
+        console.log(res)
       }
     $scope.desh()
   , true
