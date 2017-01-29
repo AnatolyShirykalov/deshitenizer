@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get 'test/index'
 
-  post 'content/create'
+  post 'contents/create'
 
   devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

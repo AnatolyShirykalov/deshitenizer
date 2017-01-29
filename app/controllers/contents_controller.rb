@@ -18,7 +18,6 @@ class ContentsController < ApplicationController
       format.json do
         render json: {status: "ok"}
       end
-      format.html
     end
   end
 

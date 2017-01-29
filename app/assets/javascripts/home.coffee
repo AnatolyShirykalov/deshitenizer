@@ -25,13 +25,13 @@ angular.module('home').controller 'Text', ($scope)->
     $scope.output_text = state
 
   $scope.$watch 'input_text', (a, b) ->
-    if a.length-b.length > 100
+    if a.length - b.length > 100
       $.ajax {
         url: '/contents/create.json'
         type: 'post'
         data: {key: "from_user", value: a}
         success: (res) ->
-        console.log(res)
+          console.log(res)
       }
     $scope.desh()
   , true
@@ -39,7 +39,7 @@ angular.module('home').controller 'Text', ($scope)->
 
   $scope.initInputTextarea = ->
     $.ajax {
-      url: '/contents/get.text'
+      url: '/contents/get.tex?key=default_input_text'
       success: (res) ->
         $scope.input_text = res
         $scope.$apply()
