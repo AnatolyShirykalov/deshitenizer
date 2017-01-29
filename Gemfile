@@ -12,6 +12,7 @@ gem 'devise'
 gem 'rails_admin'
 gem 'enumerize'
 
+
 # HTML templates
 gem 'slim-rails'
 gem 'html2slim'
