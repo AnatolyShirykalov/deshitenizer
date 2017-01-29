@@ -31,7 +31,7 @@ angular.module('home').controller 'Text', ($scope)->
         type: 'post'
         data: {key: "from_user", value: a}
         success: (res) ->
-        console.log(res)
+          console.log(res)
       }
     $scope.desh()
   , true
