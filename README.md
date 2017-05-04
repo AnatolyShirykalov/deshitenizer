@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Install
+### Linux Mint
+```bash
+sudo apt install nodejs ruby ruby-dev imagemagick postgresql ssh git
+git clone git@github.com:AnatolyShirykalov/deshitenizer.git
+cd deshitenizer
+gem install bundler
+sudo su postgres
+psql -c "CREATE USER $LOGNAME WITH password '$LOGNAME';"
+psql -c "CREATE DATABASE deshitenizer_development WITH OWNER = $LOGNAME;"
+exit
+bundle exec rake db:migrate
+bundle exec rake db:seed
+```
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Run in develomer mode
+```bash
+bundle exec rails s
+```
