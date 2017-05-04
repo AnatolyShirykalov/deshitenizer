@@ -37,6 +37,16 @@ angular.module('home').controller 'Text', ($scope)->
   , true
 
 
+  $scope.deepJob = ->
+    $.ajax {
+      type: "POST"
+      url: '/contents/deepjob.text'
+      data: {text: $scope.input_text}
+      success: (res) ->
+        $scope.output_text2 = res
+        $scope.$apply()
+     }
+
   $scope.initInputTextarea = ->
     $.ajax {
       url: '/contents/get.text?key=default_input_text'

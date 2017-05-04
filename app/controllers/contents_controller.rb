@@ -21,7 +21,22 @@ class ContentsController < ApplicationController
     end
   end
 
+
+  def deepjob
+    txt = params[:text]
+    respond_to do |format|
+      format.text do
+	render text: deepJob(txt)
+      end
+    end
+  end
+
   private
+
+  def deepJob(txt)
+    # вставляй сюда по полной
+    txt
+  end
   def get_params
     params.permit(:key)
   end

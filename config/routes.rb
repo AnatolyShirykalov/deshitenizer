@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'test/index'
 
   post 'contents/create'
+  post 'contents/deepjob'
 
   devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
