@@ -2,14 +2,14 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
+gem 'rails', '~> 5.0.7', '>= 5.0.7.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 
 # User authentification
 gem 'devise'
 # Administration panel
-gem 'rails_admin'
+gem 'rails_admin', '>= 1.1.0'
 gem 'enumerize'
 
 
@@ -18,7 +18,7 @@ gem 'slim-rails'
 gem 'html2slim'
 
 # 
-gem 'ngannotate-rails'
+gem 'ngannotate-rails', '>= 1.2.2'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
