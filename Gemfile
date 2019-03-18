@@ -7,7 +7,7 @@ gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'pg', '~> 0.18'
 
 # User authentification
-gem 'devise'
+gem 'devise', '>= 4.6.0'
 # Administration panel
 gem 'rails_admin'
 gem 'enumerize'
