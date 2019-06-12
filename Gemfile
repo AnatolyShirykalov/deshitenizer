@@ -9,7 +9,7 @@ gem 'pg', '~> 0.18'
 # User authentification
 gem 'devise'
 # Administration panel
-gem 'rails_admin'
+gem 'rails_admin', '>= 1.4.0'
 gem 'enumerize'
 
 
